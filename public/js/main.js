@@ -21,7 +21,10 @@ console.log(username, room)
 //     console.log('yey it worked')
 // }
 if (typeof(room) !== 'undefined') {
-    socket.emit('joined room', { username, room });
+    socket.on('on person room', room)
+    // socket.emit('joined room', { username, room });
+    socket.emit('joined room', username);
+
 }
 socket.on('rooms details',allRoomsArray=>{
     console.log(allRoomsArray)
