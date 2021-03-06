@@ -173,6 +173,12 @@ io.on('connection', (socket) => {
     //     io.to(user.room).emit('chat message', formatMessage(user.username, msg));
     // });
 
+    socket.on('sendUsername', async (username) => {
+        let friends = await ormfnct.getFriends(username);
+
+        socket.emit('showFriends', friends);
+    });
+
     socket.on('add friend', () => {
         const user = getCurrentUser(socket.id);
         socket.broadcast.to(user.room).emit('add friend', formatMessage(`${user.username}`, 'wants to Add you as friend'));
@@ -186,6 +192,7 @@ io.on('connection', (socket) => {
         console.log('added :', getRoomUsers(user.room))
         let user1 = getRoomUsers(user.room)[0].username
         let user2 = getRoomUsers(user.room)[1].username
+        ormfnct.addFriend(`${user1}`, `${user2}`);
 
         console.log(`${user1} and ${user2} are now friends`)
         friends.push({ user1, user2 })
@@ -298,6 +305,13 @@ io.on('connection', (socket) => {
             'add sent',
             formatMessage(`${user.username}`, 'You have sent a friend request')
         );
+    });
+    socket.on('getMessages', async (mems) => {
+        const user1 = mems[0] + ',' + mems[1];
+        const user2 = mems[1] + ',' + mems[0];
+        const membersChat = await getMemChat(`${user1}`, `${user2}`);
+        socket.emit('pastMessages', membersChat);
+        console.log(membersChat);
     });
 
     socket.on('added', () => {
