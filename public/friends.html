@@ -93,7 +93,7 @@
     }
 
     body {
-      background-color: rgb(199, 202, 223)
+      background-color: #0D0668
     }
 
     /* friends styling */
@@ -209,8 +209,8 @@
   </style>
 
 
-    <!-- side nav with buttons -->
-    <div class="grid-container">
+  <!-- side nav with buttons -->
+  <div class="grid-container">
     <!-- COLLAPSIBLE SIDENAV -->
     <div class="sidebar">
       <button id="sidebarButton" class="sidebarButton" onclick="showHideSidebar();toggle(this)">
@@ -238,35 +238,37 @@
           style=" border-width: 5px ;border-style:double ;border-color: rgb(8, 10, 107); height: 50vh; overflow-y: scroll; background-color: white;">
           <div class="container main ">
             <!-- <div class="col"> -->
-              <!-- <div class="row"> -->
-                <h1 style="margin-bottom:10% ; text-align: center; font-weight:bold">Friends</h1>
-                <div class="row">
-                  <div id="online" class="col-4">
-                    <h4 style="font-weight:bold">Online:</h4>
-                    <ul id='onlineFriendList'>
-                    <div class='icon-container' style="margin-bottom:5%">
+            <!-- <div class="row"> -->
+            <h1 style="margin-bottom:10% ; text-align: center; font-weight:bold">Friends</h1>
+            <div class="row">
+              <div id="online" class="col-4">
+                <h4 style="font-weight:bold">Online:</h4>
+                <ul id='onlineFriendList'>
+                  <!-- <div class='icon-container' style="margin-bottom:5%">
                       <img class="img1"
                         src="https://cdn2.iconfinder.com/data/icons/flatfaces-everyday-people-square/128/beard_male_man_face_avatar-512.png" />
                       <div class='online-status-circle'>
                       </div>
                       <p>Jack</p>
-                    </div></ul>
-                  </div>
-                  <div id="offline" class="col-4">
-                    <h4 style="font-weight:bold">Offline:</h4>
-                    <ul id='offlineFriendList'>
-                    <div class='icon-container' style="margin-bottom:10%">
-                      <img class="img1"
-                        src="https://cdn2.iconfinder.com/data/icons/beautiful-and-sexy-women-avatar-with-different-hai/283/female-full-03-512.png" />
-                      <div class='offline-status-circle'>
-                      </div>
-                      <p>Mischa</p>
-                    </div></ul>
-                  </div>
-                  <div id="notification" class="col-4">
-                    <h4 style="font-weight:bold">Notifications:</h4>
-                    <ul id='notification'></ul>
-                  <!-- </div> -->
+                    </div> -->
+                </ul>
+              </div>
+              <div id="offline" class="col-4">
+                <h4 style="font-weight:bold">Offline:</h4>
+                <ul id='offlineFriendList'>
+                  <!-- <div class='icon-container' style="margin-bottom:10%">
+                    <img class="img1"
+                      src="https://cdn2.iconfinder.com/data/icons/beautiful-and-sexy-women-avatar-with-different-hai/283/female-full-03-512.png" />
+                    <div class='offline-status-circle'>
+                    </div>
+                    <p>Mischa</p>
+                  </div> -->
+                </ul>
+              </div>
+              <div id="notification" class="col-4">
+                <h4 style="font-weight:bold">Notifications:</h4>
+                <ul id='notification'></ul>
+                <!-- </div> -->
                 <!-- </div> -->
               </div>
             </div>
@@ -276,15 +278,15 @@
         <div class="col-lg-6 col-sm-12"
           style=" border-width: 5px ;border-style:double ;border-color: rgb(8, 10, 107); height: 50vh; overflow-y: scroll; background-color: white;">
           <h1 style="text-align: center;font-weight:bold"">Profile</h1>
-          <!-- <h1 style="text-align: center;font-weight:bold">Rooms</h1> -->
-          <h5 style="margin-top: 5% ; text-align: center;">Insert username to check profile or send messages </h5><input id="secondUser"
-            type="text" placeholder="name" size="20" style="margin-left: 35%;">
-          <button class="btn" id="createRoom" style="background-color: transparent;"><i class="fa fa-plus-square-o"
-             ></i></button>
+          <!-- <h1 style=" text-align: center;font-weight:bold">Rooms</h1> -->
+          <h5 style="margin-top: 5% ; text-align: center;">Insert username to check profile or send messages </h5><input
+            id="secondUser" type="text" placeholder="name" size="20" style="margin-left: 35%;">
+          <button class="btn" id="createRoom" style="background-color: transparent;"><i
+              class="fa fa-plus-square-o"></i></button>
           <br>
           <br>
           <!-- <div style=""> -->
-          
+
           <!-- </div> -->
           <div class="col">
 
@@ -298,7 +300,7 @@
                 <div class="col-md-8">
                   <div class="card-body" style="color: #000000;">
                     <h5 class="card-title" style="text-align: center;" id="username2">User2</h5>
-                       <!-- <i class="fa fa-mars"style="font-size:24px"></i> -->
+                    <!-- <i class="fa fa-mars"style="font-size:24px"></i> -->
                     <p class='card=text' id='age'>age</p>
                     <p class="card-text" id='bio'>Some quick example text to build on the Bio of the user blablabla</p>
                   </div>
@@ -443,12 +445,36 @@
         friends.forEach(async (user) => {
           friendList.push(user.friend)
         })
-        console.log(friendList)
+        console.log(`[friendList]${friendList} ; [friendList[1]]:${friendList[1]}`)
         // let friendArea = document.getElementById('friendList').innerHTML
         for (var i = 0; i < friendList.length; i++) {
           const username = document.getElementById('secondUser').value
-          const profile = await fetch(`/getProfile/${friendList[1]}`).then(r => r.json())
-          document.getElementById('friendList').innerHTML += `<li>${friendList[i]}</li>`
+          const profile = await fetch(`/getProfile/${friendList[i]}`).then(r => r.json())
+          const status = await fetch(`/getStatus/${friendList[i]}`).then(r => r.json())
+          let chosenClass =''
+          let statuspath = ''
+          if (status[0].is_active ==1){
+            chosenClass='online-status-circle'
+            statuspath ='onlineFriendList'
+          }
+          else{
+            chosenClass='offline-status-circle'
+            statuspath ='offlineFriendList'
+          }
+          console.log('[statuspath]',statuspath)
+          console.log('[chosenClass]',chosenClass)
+          console.log('[status]',status[0].is_active)
+          console.log(profile)
+          
+          document.getElementById(`${statuspath}`).innerHTML += `
+          <div class='icon-container' style="margin-top:20%">
+           <img class="img1"
+           src="${profile[0].img_path}" />
+           <div class='${chosenClass}'>
+           </div>
+           <p>${friendList[i]}</p>
+          </div>`
+
         }
       })
     }
@@ -471,7 +497,7 @@
     // }
     //showFriends()
 
-    
+
     // document.getElementById('goToMainRoom').addEventListener('click', function () {
     //   window.document.location = '/mainroom.html' + '?username=' + username;
     // })

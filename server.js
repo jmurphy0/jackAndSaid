@@ -66,6 +66,12 @@ app.get('/getProfile/:username', async function (req,res){
     //console.log(userData)
     res.send(userData)
 })
+app.get('/getStatus/:username', async function (req,res){
+    const username = req.params.username
+    const status = await ormfnct.checkStatus(username)
+    console.log('[status]', status)
+    res.send(status)
+})
 
 app.post('/editProfile/:username', async (req, res)=>{
     const userdata = req.body
@@ -102,6 +108,7 @@ io.on('connection', (socket) => {
     socket.on('joined room', ( username) => {
         // room++
         let isActive = true
+        ormfnct.isActive(username);
         // room = 1
         console.log(room)
         roomsMonitoring.push(room)
@@ -179,13 +186,6 @@ io.on('connection', (socket) => {
         socket.emit('showFriends', friends);
     });
 
-    socket.on('add friend', () => {
-        const user = getCurrentUser(socket.id);
-        socket.broadcast.to(user.room).emit('add friend', formatMessage(`${user.username}`, 'wants to Add you as friend'));
-        socket.emit('add sent', formatMessage(`${user.username}`, 'You have sent a friend request'));
-
-    })
-
     socket.on('added', () => {
         const user = getCurrentUser(socket.id);
         socket.broadcast.to(user.room).emit('added', formatMessage(`${user.username}`, ' has accepted your friend request!'));
@@ -249,6 +249,7 @@ io.on('connection', (socket) => {
             })
             console.log('The user that left and needs "isActive" to be changed to false in database is:', user)
             user.isActive = false
+            ormfnct.isNotActive(user.username);
             console.log(user)
 
             // let x = getRoomUsers(filteredRandomRoom)
@@ -295,18 +296,13 @@ io.on('connection', (socket) => {
 
     socket.on('add friend', () => {
         const user = getCurrentUser(socket.id);
-        socket.broadcast
-            .to(user.room)
-            .emit(
-                'add friend',
-                formatMessage(`${user.username}`, 'wants to Add you as friend')
-            );
-        socket.emit(
-            'add sent',
-            formatMessage(`${user.username}`, 'You have sent a friend request')
-        );
-    });
+        socket.broadcast.to(user.room).emit('add friend', formatMessage(`${user.username}`, 'wants to Add you as friend'));
+        socket.emit('add sent', formatMessage(`${user.username}`, 'You have sent a friend request'));
+
+    })
+
     socket.on('getMessages', async (mems) => {
+        console.log('find out what that is',mems)
         const user1 = mems[0] + ',' + mems[1];
         const user2 = mems[1] + ',' + mems[0];
         const membersChat = await getMemChat(`${user1}`, `${user2}`);
@@ -314,15 +310,6 @@ io.on('connection', (socket) => {
         console.log(membersChat);
     });
 
-    socket.on('added', () => {
-        const user = getCurrentUser(socket.id);
-        socket.broadcast
-            .to(user.room)
-            .emit(
-                'added',
-                formatMessage(`${user.username}`, ' has accepted your friend request!')
-            );
-    });
     //When User disconnects
     socket.on('disconnect', () => {
     // console.log('user disconnected');

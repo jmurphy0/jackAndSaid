@@ -68,6 +68,9 @@ document.getElementById('createRoom').addEventListener('click', () => {
         socket.connect()
         console.log('username', username)
         // socket.emit('friend online',username)
+        // console.log(`[username]:${username} ; [seconUserName]: ${secondUserName}`)
+        // socket.emit('getMessages',([username,secondUserName]))
+
     }
 })
 

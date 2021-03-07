@@ -109,6 +109,13 @@ function checkUser(username, password) {
         }
     });
 }
+
+function checkStatus(username){
+    return db.query(
+        `SELECT is_active FROM users WHERE username = "${username}";`
+    );
+}
+
 // returns fn, ln, username, email, bio and img path from users table
 function getProfile(username) {
     return db.query(
@@ -148,4 +155,5 @@ module.exports = {
     isActive,
     isNotActive,
     getRoomName,
+    checkStatus,
 };
