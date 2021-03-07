@@ -2,213 +2,215 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panther Friends</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panther Friends</title>
 
-    <!-- LINKS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
-    <link href="assets/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- LINKS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+  <link href="assets/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 </head>
 
 <body>
-    <style>
-  .grid-container {
-    width: 100vw;
-    margin: 0 auto;
-    height: 100vh;
-    display: flex;
-    border: 2px solid rgba(0, 0, 0, 0.4);
-    transition: 1s ease;
-  }
+  <style>
+    .grid-container {
+      width: 100vw;
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      border: 2px solid rgba(0, 0, 0, 0.4);
+      transition: 1s ease;
+    }
 
-  .sidebar {
-    /* width: 350px; */
-    height: 100%;
-    background-color: rgb(13, 6, 104);
-    transition: 1s ease;
-    position: relative;
-    text-align: center;
-    justify-content: center;
-  }
-
-  @media only screen and (min-width: 770px) {  
     .sidebar {
+      width: 350px;
+      height: 100%;
+      background-color: rgb(13, 6, 104);
+      transition: 1s ease;
+      position: relative;
+      text-align: center;
+      justify-content: center;
+    }
+
+    @media only screen and (min-width: 770px) {
+      .sidebar {
         width: 350px;
+      }
     }
-} 
-   @media only screen and (max-width: 768px) {  
-    .sidebar {
+
+    @media only screen and (max-width: 768px) {
+      .sidebar {
         width: 100%;
+      }
     }
-} 
 
 
-  .main-content {
-    width: 100%;
-    height: 100%;
-    background-color: #ccc;
-    transition: 1s ease;
-  }
+    .main-content {
+      width: 100%;
+      height: 100%;
+      background-color: #ccc;
+      transition: 1s ease;
+    }
 
-  .main-content_large {
-    width: 100%;
-  }
+    .main-content_large {
+      width: 100%;
+    }
 
-  .sidebar_small {
-    width: 0%;
-  }
+    .sidebar_small {
+      width: 0%;
+    }
 
-  .sidebarButton {
-    position: absolute;
-    border: none;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.3);
-    left: 100%;
-    top: 50vh;
-    transform: translateX(-50%);
-    cursor: pointer;
-    z-index: 1;
-  }
+    .sidebarButton {
+      position: absolute;
+      border: none;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.3);
+      left: 100%;
+      top: 47vh;
+      transform: translateX(-50%);
+      cursor: pointer;
+      z-index: 1;
+    }
 
-  .navLinks {
-    position: relative;
-    display: block;
-    text-align: center;
-    overflow-x: hidden;
-    text-decoration: none;
-    font-size: 25px;
-    color: #000000;
-    z-index: 0;
-  }
+    .navLinks {
+      position: relative;
+      display: block;
+      text-align: center;
+      overflow-x: hidden;
+      text-decoration: none;
+      font-size: 25px;
+      color: #000000;
+      z-index: 0;
+    }
 
-  body {
-    background-color: rgb(199, 202, 223)
-  }
+    body {
+      background-color: rgb(199, 202, 223)
+    }
 
-/* friends styling */
-  .icon-container {
-    width: 40px;
-    height: 40px;
-    position: relative;
-  }
+    /* friends styling */
+    .icon-container {
+      width: 40px;
+      height: 40px;
+      position: relative;
+    }
 
-  .img1 {
-    /* height: 100%; */
-    width: 100%;
-    border-radius: 50%;
-  }
+    .img1 {
+      /* height: 100%; */
+      width: 100%;
+      border-radius: 50%;
+    }
 
-  .online-status-circle {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: rgb(14, 94, 3);
-    border: 2px solid white;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-  }
+    .online-status-circle {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: rgb(14, 94, 3);
+      border: 2px solid white;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+    }
 
-  .offline-status-circle {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: grey;
-    border: 2px solid white;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-  }
+    .offline-status-circle {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: grey;
+      border: 2px solid white;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+    }
 
-  #form {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.15);
-    padding: 0.25rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    /* right: 50%; */
-    display: flex;
-    height: 3rem;
-    box-sizing: border-box;
-    backdrop-filter: blur(10px);
-    /* background-color: ; */
-  }
+    #form {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.15);
+      padding: 0.25rem;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      /* right: 50%; */
+      display: flex;
+      height: 3rem;
+      box-sizing: border-box;
+      backdrop-filter: blur(10px);
+      /* background-color: ; */
+    }
 
-  #input {
-    border: none;
-    padding: 0 1rem;
-    flex-grow: 1;
-    border-radius: 2rem;
-    margin: 0.25rem;
-  }
+    #input {
+      border: none;
+      padding: 0 1rem;
+      flex-grow: 1;
+      border-radius: 2rem;
+      margin: 0.25rem;
+    }
 
-  #input:focus {
-    outline: none;
-  }
+    #input:focus {
+      outline: none;
+    }
 
-  #form>button {
-    background: #333;
-    border: none;
-    padding: 0 1rem;
-    margin: 0.25rem;
-    border-radius: 3px;
-    outline: none;
-    color: #fff;
-  }
+    #form>button {
+      background: #333;
+      border: none;
+      padding: 0 1rem;
+      margin: 0.25rem;
+      border-radius: 3px;
+      outline: none;
+      color: #fff;
+    }
 
-  #messages {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
+    #messages {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
 
-  span {
-    font-size: smaller;
-  }
+    span {
+      font-size: smaller;
+    }
 
-  .meta {
-    font-weight: bold;
-  }
+    .meta {
+      font-weight: bold;
+    }
 
-  .text {
-    color: black;
-    position: relative;
-  }
+    .text {
+      color: black;
+      position: relative;
+    }
 
-  .hideMessage {
-    display: none;
-  }
+    .hideMessage {
+      display: none;
+    }
 
-  #messages>li {
-    padding: 0.5rem 1rem;
-  }
+    #messages>li {
+      padding: 0.5rem 1rem;
+    }
 
-  p {
-    margin-bottom: 0px;
-  }
+    p {
+      margin-bottom: 0px;
+    }
 
-  #messages>li:nth-child(odd) {
-    background: #efefef;
-  }
-  .margins {
-    margin: 1%;
-  }
-</style>
+    #messages>li:nth-child(odd) {
+      background: #efefef;
+    }
+
+    .margins {
+      margin: 1%;
+    }
+  </style>
 
 
-    <!-- COLLAPSABLE SIDE NAV -->
-   <div class="grid-container">
+    <!-- side nav with buttons -->
+    <div class="grid-container">
     <!-- COLLAPSIBLE SIDENAV -->
     <div class="sidebar">
       <button id="sidebarButton" class="sidebarButton" onclick="showHideSidebar();toggle(this)">
@@ -217,110 +219,115 @@
           <!-- SIDE BAR CONTENT -->
           <div class="sidebarContent">
 
-            <img src="assets/Panther-Chatroom---Logo-Reveal.gif" class="navLinks" style=width:90%; />
+            <img src="assets/Panther-Chatroom-Logo.gif" class="navLinks" style=width:90%; />
 
             <h5 id="uName" class="navLinks" style="color: white;">insert username here</h5>
 
-          <a id='goToRandomChat' class="sidebtn navLinks">Start Chat</a>
-          <a id='goToProfile' class="sidebtn navLinks">View Profile</a>
-          <a id='goToMainRoom' class="sidebtn navLinks">Exit Friends</a>
-          <a href="./index.html" class="leavebtn navLinks">Logout</a>
-     
+            <a id='goToRandomChat' class="sidebtn navLinks">Start Chat</a>
+            <a id='goToProfile' class="sidebtn navLinks">View Profile</a>
+            <a id='goToMainRoom' class="sidebtn navLinks">Exit Friends</a>
+            <a href="./index.html" class="leavebtn navLinks">Logout</a>
+
           </div>
 
     </div>
     <main class="main-content" style="height: 100vh;">
-        <div class="row">
-      
-            <div class="col-lg-6 col-sm-12"
-                style=" border-width: 5px ;border-style: dashed ;border-color: rgb(8, 10, 107); height: 400px; overflow-y: scroll; background-color: white;">
-                <div class="container main ">
-                    <div class="col">
-                        <div class="row">
-                            <h1 style="margin-bottom:10% ; text-align: center; font-weight:bold">Friends</h1>
-                            <div class="row">
-                                <div id="online" class="col-4">
-                                    <h4 style="font-weight:bold">Online:</h4>
-                                    <ul id='friendList'></ul>
-                                    <div class='icon-container' style="margin-bottom:5%">
-                                        <img class="img1"
-                                            src="https://cdn2.iconfinder.com/data/icons/flatfaces-everyday-people-square/128/beard_male_man_face_avatar-512.png" />
-                                        <div class='online-status-circle'>
-                                        </div>
-                                        <p>User2</p>
-                                    </div>`
-                                </div>
-                                <div id="offline" class="col-4">
-                                    <h4 style="font-weight:bold">Offline:</h4>
-                                    <div class='icon-container' style="margin-bottom:10%">
-                                        <img class="img1"
-                                            src="https://cdn2.iconfinder.com/data/icons/beautiful-and-sexy-women-avatar-with-different-hai/283/female-full-03-512.png" />
-                                        <div class='offline-status-circle'>
-                                        </div>
-                                        <p>User3</p>
-                                    </div>
-                                </div>
-                                <div id="offline" class="col-4">
-                                    <h4 style="font-weight:bold">Notifications:</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="col-6">asfas</div> -->
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-12 " style="color: white; height: 200px;">
-                <!-- <h1 style="text-align: center;font-weight:bold">Rooms</h1> -->
-                <p style="margin: 5% ;">Insert username to check profile or send messages </p><input id="secondUser"
-                    type="text" placeholder="name" size="16" style="margin-left: 5%;">
-                <button id="createRoom" style="background-color: transparent;"><i class="fa fa-plus-square-o"
-                        style="color:rgb(229, 229, 245)"></i></button>
-                <br>
-                <br>
-                <!-- <div style=""> -->
-                <h1 style="text-align: center;">Profile</h1>
-                <!-- </div> -->
-                <div class="col">
+      <div class="row">
 
-                  <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img id='pic' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbKgzfBgGfUipgScQCMULqDdhKbiYNTtFNqQ&usqp=CAU" style="max-width: 150px; max-height: 150px;">
+        <div class="col-lg-6 col-sm-12"
+          style=" border-width: 5px ;border-style:double ;border-color: rgb(8, 10, 107); height: 50vh; overflow-y: scroll; background-color: white;">
+          <div class="container main ">
+            <!-- <div class="col"> -->
+              <!-- <div class="row"> -->
+                <h1 style="margin-bottom:10% ; text-align: center; font-weight:bold">Friends</h1>
+                <div class="row">
+                  <div id="online" class="col-4">
+                    <h4 style="font-weight:bold">Online:</h4>
+                    <ul id='onlineFriendList'>
+                    <div class='icon-container' style="margin-bottom:5%">
+                      <img class="img1"
+                        src="https://cdn2.iconfinder.com/data/icons/flatfaces-everyday-people-square/128/beard_male_man_face_avatar-512.png" />
+                      <div class='online-status-circle'>
                       </div>
-                      <div class="col-md-8">
-                        <div class="card-body" style="color: #000000;">
-                         <h5 class="card-title" style="text-align: center;" id="username2">User2 <i class="fa fa-mars"
-                                    style="font-size:24px"></i></h5>
-                            <p class='card=text' id='age'>age</p>       
-                            <p class="card-text" id='bio'>Some quick example text to build on the Bio of the user blablabla</p>
-                        </div>
+                      <p>Jack</p>
+                    </div></ul>
+                  </div>
+                  <div id="offline" class="col-4">
+                    <h4 style="font-weight:bold">Offline:</h4>
+                    <ul id='offlineFriendList'>
+                    <div class='icon-container' style="margin-bottom:10%">
+                      <img class="img1"
+                        src="https://cdn2.iconfinder.com/data/icons/beautiful-and-sexy-women-avatar-with-different-hai/283/female-full-03-512.png" />
+                      <div class='offline-status-circle'>
                       </div>
-                    </div>
+                      <p>Mischa</p>
+                    </div></ul>
+                  </div>
+                  <div id="notification" class="col-4">
+                    <h4 style="font-weight:bold">Notifications:</h4>
+                    <ul id='notification'></ul>
+                  <!-- </div> -->
+                <!-- </div> -->
+              </div>
+            </div>
+            <!-- <div class="col-6">asfas</div> -->
+          </div>
+        </div>
+        <div class="col-lg-6 col-sm-12"
+          style=" border-width: 5px ;border-style:double ;border-color: rgb(8, 10, 107); height: 50vh; overflow-y: scroll; background-color: white;">
+          <h1 style="text-align: center;font-weight:bold"">Profile</h1>
+          <!-- <h1 style="text-align: center;font-weight:bold">Rooms</h1> -->
+          <h5 style="margin-top: 5% ; text-align: center;">Insert username to check profile or send messages </h5><input id="secondUser"
+            type="text" placeholder="name" size="20" style="margin-left: 35%;">
+          <button class="btn" id="createRoom" style="background-color: transparent;"><i class="fa fa-plus-square-o"
+             ></i></button>
+          <br>
+          <br>
+          <!-- <div style=""> -->
+          
+          <!-- </div> -->
+          <div class="col">
+
+            <div class="card mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img id='pic'
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbKgzfBgGfUipgScQCMULqDdhKbiYNTtFNqQ&usqp=CAU"
+                    style="max-width: 150px; max-height: 150px;">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body" style="color: #000000;">
+                    <h5 class="card-title" style="text-align: center;" id="username2">User2</h5>
+                       <!-- <i class="fa fa-mars"style="font-size:24px"></i> -->
+                    <p class='card=text' id='age'>age</p>
+                    <p class="card-text" id='bio'>Some quick example text to build on the Bio of the user blablabla</p>
                   </div>
                 </div>
-            </div>
-        </div>
-        
-          
-         <div class="row">
-            <div class="col-lg-12 col-sm-12"
-                style=" border-width: 5px ;border-style: dashed ;border-color: rgb(8, 10, 107); height: 400px; overflow-y: scroll;background-color: white;">
-                <div id="divScroll" class="container main">
-                    <!-- <div class="user">Said</div> -->
-                    <h2 id="waitingMessage" style="margin: 5%;">Your friend is away :(</h2>
-                    <ul id="messages" style="margin-top:5%;"></ul>
-                    <form id="form" action="">
-                        <input id="input" autocomplete="off" disabled /><button id="goUp">Send</button>
-                    </form>
-
-
-                </div>
-
+              </div>
             </div>
           </div>
+        </div>
       </div>
-         
-    </main>
+
+
+      <div class="row">
+        <div class="col-lg-12 col-sm-12"
+          style=" border-width: 5px ;border-style: double ;border-color: rgb(8, 10, 107); height: 400px; overflow-y: scroll;background-color: white;">
+          <div id="divScroll" class="container main">
+            <!-- <h2 id="waitingMessage" style="margin: 5%;">Your friend is away :(</h2> -->
+            <ul id="messages" style="margin-top:5%;"></ul>
+            <form id="form" action="">
+              <input id="input" autocomplete="off" disabled /><button id="goUp">Send</button>
+            </form>
+
+
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+  </main>
 
 
 </body>
@@ -334,120 +341,121 @@
 
 <body>
 
-    <script src="/socket.io/socket.io.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
-        integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg=="
-        crossorigin="anonymous"></script>
-    <script src="js/friends.js"></script>
-    <script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
+    integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg=="
+    crossorigin="anonymous"></script>
+  <script src="js/friends.js"></script>
+  <script>
 
-        document.getElementById('goToMainRoom').addEventListener('click', function () {
-            window.document.location = '/mainroom.html' + '?username=' + username;
-        })
-        document.getElementById('goToRandomChat').addEventListener('click', function () {
+    document.getElementById('goToMainRoom').addEventListener('click', function () {
+      window.document.location = '/mainroom.html' + '?username=' + username;
+    })
+    document.getElementById('goToRandomChat').addEventListener('click', function () {
 
-            var roomChoice = Math.round(Math.random() * 100)
-            socket.on('new room', newRoom => {
-                roomChoice = newRoom
-                console.log('roomChoice:', roomChoice)
-            })
-            console.log('roomChoice:', roomChoice)
+      var roomChoice = Math.round(Math.random() * 100)
+      socket.on('new room', newRoom => {
+        roomChoice = newRoom
+        console.log('roomChoice:', roomChoice)
+      })
+      console.log('roomChoice:', roomChoice)
 
-            window.document.location = '/randomchat.html' + '?username=' + username + '&room=' + roomChoice;
+      window.document.location = '/randomchat.html' + '?username=' + username + '&room=' + roomChoice;
 
-        })
-        document.getElementById('goToProfile').addEventListener('click', function () {
-            window.document.location = '/profile.html' + '?username=' + username;
-        })
+    })
+    document.getElementById('goToProfile').addEventListener('click', function () {
+      window.document.location = '/profile.html' + '?username=' + username;
+    })
 
-         const sidebar = document.querySelector('.sidebar');
-  const mainContent = document.querySelector('.main-content');
+    const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
 
-  function showHideSidebar() {
-    sidebar.classList.toggle('sidebar_small')
-    mainContent.classList.toggle('main-content_large')
-  }
+    function showHideSidebar() {
+      sidebar.classList.toggle('sidebar_small')
+      mainContent.classList.toggle('main-content_large')
+    }
 
-  function toggle(element) {
-    element.innerText = element.innerText === '<<' ? '>>' : '<<';
-  }
+    function toggle(element) {
+      element.innerText = element.innerText === '<<' ? '>>' : '<<';
+    }
 
-        //console.log(socket.disconnect())
+    //console.log(socket.disconnect())
 
 
-        document.getElementById('goUp').addEventListener('click', () => {
-            console.log('testttt')
+    document.getElementById('goUp').addEventListener('click', () => {
+      console.log('testttt')
 
-        })
+    })
 
-        function printNameonWelcome() {
-            const { username } = Qs.parse(location.search, {
-                ignoreQueryPrefix: true
-            })
-            console.log(username)
-            document.getElementById('uName').innerHTML = username
-        }
-        printNameonWelcome()
+    function printNameonWelcome() {
+      const { username } = Qs.parse(location.search, {
+        ignoreQueryPrefix: true
+      })
+      console.log(username)
+      document.getElementById('uName').innerHTML = username
+    }
+    printNameonWelcome()
 
-        async function getUsersInChat(){
+    async function getUsersInChat() {
 
-            const user1  = Qs.parse(location.search, {
-                ignoreQueryPrefix: true
-            })
-            const user2 = document.getElementById(`secondUser`).value
-            return[user1.username,user2]
-        }
-            
+      const user1 = Qs.parse(location.search, {
+        ignoreQueryPrefix: true
+      })
+      const user2 = document.getElementById(`secondUser`).value
+      return [user1.username, user2]
+    }
 
-            // populates the profile page with db data
-            async function fetchChats(mems){
-            const chats = await fetch( `/getChats/${mems}` ).then( r=>r.json() )
-            chatHistory = []
-            for(i=0; i<chats.length; i++){
-                chatHistory.push(chats[i])
-            }
-            console.log(chats)
-            console.log(chatHistory)
-            }
-            
-       document.getElementById('createRoom').addEventListener('click', async()=>{
-           const mems = await getUsersInChat()
-           console.log(mems)
-           fetchProfile()
-           socket.emit('getMessages', mems)
-       })
 
-    async function fetchProfile(){
-        const username = document.getElementById('secondUser').value
-      const profile = await fetch( `/getProfile/${username}` ).then( r=>r.json() )
+    // populates the profile page with db data
+    async function fetchChats(mems) {
+      const chats = await fetch(`/getChats/${mems}`).then(r => r.json())
+      chatHistory = []
+      for (i = 0; i < chats.length; i++) {
+        chatHistory.push(chats[i])
+      }
+      console.log(chats)
+      console.log(chatHistory)
+    }
+
+    document.getElementById('createRoom').addEventListener('click', async () => {
+      const mems = await getUsersInChat()
+      console.log(mems)
+      fetchProfile()
+      socket.emit('getMessages', mems)
+    })
+
+    async function fetchProfile() {
+      const username = document.getElementById('secondUser').value
+      const profile = await fetch(`/getProfile/${username}`).then(r => r.json())
 
       console.log(profile)
       document.getElementById('bio').innerHTML = ` ${profile[0].bio}`
       document.getElementById('pic').src = `${profile[0].img_path}`
-      document.getElementById('username2').innerHTML = `${profile[0].first_name}` + ' '+ `${profile[0].last_name}`
+      document.getElementById('username2').innerHTML = `${profile[0].first_name}` + ' ' + `${profile[0].last_name}`
       document.getElementById('age').innerHTML = `${profile[0].age}`
-     // document.getElementById('username').innerHTML = `${username}`
+      // document.getElementById('username').innerHTML = `${username}`
     }
-    async function getFriends(){
-    var friendList= []
-    socket.emit('sendUsername', document.getElementById('uName').innerHTML)
-    socket.on('showFriends',async friends =>{
-         friends.forEach(async (user)=>{
-             friendList.push(user.friend)
-         })
-    console.log(friendList)
-   // let friendArea = document.getElementById('friendList').innerHTML
-    for (var i=0; i<friendList.length; i++){
-        const username = document.getElementById('secondUser').value
-      const profile = await fetch( `/getProfile/${friendList[1]}` ).then( r=>r.json() )
-        document.getElementById('friendList').innerHTML +=`<li>${friendList[i]}</li>`
+    async function getFriends() {
+      var friendList = []
+      socket.emit('sendUsername', document.getElementById('uName').innerHTML)
+      socket.on('showFriends', async friends => {
+        friends.forEach(async (user) => {
+          friendList.push(user.friend)
+        })
+        console.log(friendList)
+        // let friendArea = document.getElementById('friendList').innerHTML
+        for (var i = 0; i < friendList.length; i++) {
+          const username = document.getElementById('secondUser').value
+          const profile = await fetch(`/getProfile/${friendList[1]}`).then(r => r.json())
+          document.getElementById('friendList').innerHTML += `<li>${friendList[i]}</li>`
+        }
+      })
     }
-})}
 
     getFriends()
-        //  console.log(friendList)
-        // return friendList
+    //  console.log(friendList)
+    // return friendList
 
     //     showFriends(friendList)
     // })}
@@ -462,23 +470,25 @@
 
     // }
     //showFriends()
-   document.getElementById('goToMainRoom').addEventListener('click', function () {
-            window.document.location = '/mainroom.html' + '?username=' + username;
-        })
-        document.getElementById('goToRandomChat').addEventListener('click', function () {
 
-            var roomChoice = Math.round(Math.random() * 100)
-            socket.on('new room', newRoom => {
-                roomChoice = newRoom
-                console.log('roomChoice:', roomChoice)
-            })
-            console.log('roomChoice:', roomChoice)
+    
+    // document.getElementById('goToMainRoom').addEventListener('click', function () {
+    //   window.document.location = '/mainroom.html' + '?username=' + username;
+    // })
+    // document.getElementById('goToRandomChat').addEventListener('click', function () {
 
-            window.document.location = '/randomchat.html' + '?username=' + username + '&room=' + roomChoice;
+    //   var roomChoice = Math.round(Math.random() * 100)
+    //   socket.on('new room', newRoom => {
+    //     roomChoice = newRoom
+    //     console.log('roomChoice:', roomChoice)
+    //   })
+    //   console.log('roomChoice:', roomChoice)
 
-        })
-        document.getElementById('goToProfile').addEventListener('click', function () {
-            window.document.location = '/profile.html' + '?username=' + username;
-        })
+    //   window.document.location = '/randomchat.html' + '?username=' + username + '&room=' + roomChoice;
 
-    </script>
+    // })
+    // document.getElementById('goToProfile').addEventListener('click', function () {
+    //   window.document.location = '/profile.html' + '?username=' + username;
+    // })
+
+  </script>

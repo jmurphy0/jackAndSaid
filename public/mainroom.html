@@ -20,89 +20,100 @@
         body {
             background-color: rgb(13, 6, 104);
         }
+
         .mainroomContent {
             width: 300px;
             text-align: center;
             margin: 0 auto;
             margin-top: 10vh;
         }
-
     </style>
 
 
 
-        <div class="mainroomContent">
-            
-          <img src="assets/Panther-Chatroom-Logo.gif" class="navLinks" style=width:300px;/>
+    <div class="mainroomContent">
 
-          <h5 id="uName" class="navLinks" style="color: white;">Welcome insert username here</h5>
+        <img src="assets/Panther-Chatroom-Logo.gif" class="navLinks" style=width:300px; />
+        <h5 id="uName" class="navLinks" style="color: white;">Welcome insert username here</h5>
+
+        <a  onclick="goToChat()" class="sidebtn navLinks">Start Chat</a>
+        <a id='goToFriends' class="sidebtn navLinks">View Friends</a>
+        <a onclick="goToProfile()" class="sidebtn navLinks">View
+            Profile</a>
+        <a href="./index.html" class="leavebtn navLinks">Logout</a>
+
+
+
+    </div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
+        integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg=="
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+
+        var name = document.getElementById('uName').innerHTML
+        // var roomChoice = Math.round(Math.random() * 100)
+        document.getElementById('goToFriends').addEventListener('click', function () {
+            window.document.location = '/friends.html' + '?username=' + username;
+        })
+        // document.getElementById('random').addEventListener('click', function () {
+        //     var roomChoice = Math.round(Math.random() * 100)
+        //     socket.on('new room', newRoom => {
+        //         roomChoice = newRoom
+        //         console.log('roomChoice:', roomChoice)
+        //     })
+        //     console.log('roomChoice:', roomChoice)
+
+        //     window.document.location = '/randomchat.html' + '?username=' + name + '&room=' + roomChoice;
+        //     // joinedRoom()
+        // })
+
+        // function printNameonWelcome() {
+        //     // setTimeout(()=>{closeNav()}, 3000)
+
+        //     const { username } = Qs.parse(location.search, {
+        //         ignoreQueryPrefix: true
+        //     })
+        //     console.log(username)
+        //     document.getElementById('uName').innerHTML = username
+        // }
+        // printNameonWelcome()
+        function printNameonWelcome() {
+      const { username } = Qs.parse(location.search, {
+        ignoreQueryPrefix: true
+      })
+      console.log('why not cominnnnnnnnnnnnnnnnng',username)
+      document.getElementById('uName').innerHTML = `Welcome ${username}`
+    }
+    printNameonWelcome()
         
-          <a><button id="random" onclick="goToChat()" class="btn btn-danger btn-sm mt-5 mb-3">Start Chat</button></a>
-          <a href="./friends.html" class="sidebtn navLinks">View Friends</a>
-        <a><button onclick="goToProfile()" class="btn btn-danger btn-sm mt-2 mb-2">View
-                    Profile</button></a>
-          <a href="./index.html" class="leavebtn navLinks">Logout</a>
-          
-            
-     
-        </div>
+        function goToChat() {
 
-
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
-            integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg=="
-            crossorigin="anonymous"></script>
-        <script src="js/main.js"></script>
-
-        <script>
-            
-            var name = document.getElementById('uName').innerHTML
-            // var roomChoice = Math.round(Math.random() * 100)
-            document.getElementById('random').addEventListener('click', function () {
-                var roomChoice = Math.round(Math.random() * 100)
-                socket.on('new room', newRoom => {
-                    roomChoice = newRoom
-                    console.log('roomChoice:', roomChoice)
-                })
-                console.log('roomChoice:', roomChoice)
-
-                window.document.location = '/randomchat.html' + '?username=' + name + '&room=' + roomChoice;
-                // joinedRoom()
+            const { username } = Qs.parse(location.search, {
+                ignoreQueryPrefix: true
             })
-
-            function printNameonWelcome() {
-                // setTimeout(()=>{closeNav()}, 3000)
-
-                const { username } = Qs.parse(location.search, {
-                    ignoreQueryPrefix: true
-                })
-                console.log(username)
-                document.getElementById('uName').innerHTML = username
-            }
-            printNameonWelcome()
-            function goToChat() {
-
-                const { username } = Qs.parse(location.search, {
-                    ignoreQueryPrefix: true
-                })
-                var roomChoice = Math.round(Math.random() * 100)
-                socket.on('new room', newRoom => {
-                    roomChoice = newRoom
-                    console.log('roomChoice:', roomChoice)
-                })
+            var roomChoice = Math.round(Math.random() * 100)
+            socket.on('new room', newRoom => {
+                roomChoice = newRoom
                 console.log('roomChoice:', roomChoice)
+            })
+            console.log('roomChoice:', roomChoice)
 
-                window.document.location = '/randomchat.html' + '?username=' + username + '&room=' + roomChoice;
-            }
-            function goToProfile() {
-                const { username } = Qs.parse(location.search, {
-                    ignoreQueryPrefix: true
-                })
-                console.log('trying to go', username)
-                window.document.location = '/profile.html' + '?username=' + username;
-            }
+            window.document.location = '/randomchat.html' + '?username=' + username + '&room=' + roomChoice;
+        }
+        function goToProfile() {
+            const { username } = Qs.parse(location.search, {
+                ignoreQueryPrefix: true
+            })
+            console.log('trying to go', username)
+            window.document.location = '/profile.html' + '?username=' + username;
+        }
 
-        </script>
+    </script>
 
 </body>
 

@@ -31,7 +31,7 @@
                 <input type="password" class="form-control" placeholder="Password" name="password" required>
                 <br>
                     <!-- LOGIN BUTTON -->
-                    <div class="fancybtn" onclick="this.classList.toggle('active')">
+                    <div class="fancybtn" id="gotToMainroom" onclick="this.classList.toggle('active')">
                         <span class="text">LOGIN</span>
                         <svg class="fingerprint fingerprint-base" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
                           <g class="fingerprint-out" fill="none" stroke-width="2" stroke-linecap="round">
@@ -121,13 +121,14 @@
                 <!-- <a class="btn btnwelcome" href="/PantherChatroom/html/register.html">Register</a> -->
             </div>
         </form>
-        <button id="gotToMainroom">testing</button>
+        <!-- <button id="gotToMainroom">testing</button> -->
     </div>
  <script>
         document.getElementById('gotToMainroom').addEventListener('click', function () {
             //     var roomChoice = Math.round(Math.random() * 100)
-           let username = document.getElementById("testingUsername").value
-                window.document.location = '/mainroom.html' + '?username=' + username ;
+            setTimeout(() => {  let username = document.getElementById("testingUsername").value
+                window.document.location = '/mainroom.html' + '?username=' + username ; }, 5000);
+           
                 // joinedRoom()
             })
  </script>

@@ -9,188 +9,220 @@
   <!-- LINKS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
   <link href="assets/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sulphur+Point&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <title>Panther Profile</title>
 </head>
 
 
 <body>
-<style>.disabledbutton {
-    pointer-events: none;
-    opacity: 0.4;}
+  <style>
+    body {
+      background-color: #ccc;
+    }
+
+    .disabledbutton {
+      pointer-events: none;
+      opacity: 0.4;
+    }
 
     .grid-container {
-    width: 100vw;
-    margin: 0 auto;
-    height: 100vh;
-    display: flex;
-    border: 2px solid rgba(0, 0, 0, 0.4);
-    transition: 1s ease;
-  }
-  
-  .sidebar {
-    width: 350px;
-    height: 100%;
-    background-color: rgb(13, 6, 104);
-    transition: 1s ease;
-    position: relative;
-    text-align: center;
-    justify-content: center;
-  }
-  /* @media only screen and (max-width: 768px) {  
-      .sidebar {
-          width: 100%;
+      width: 100vw;
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      border: 2px solid rgba(0, 0, 0, 0.4);
+      transition: 1s ease;
+    }
+
+    .sidebar {
+      width: 350px;
+      height: 100%;
+      background-color: rgb(13, 6, 104);
+      transition: 1s ease;
+      position: relative;
+      text-align: center;
+      justify-content: center;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .col-4 {
+        width: 100%;
       }
-  } */
-  
-  .main-content {
-    width: 100%;
-    height: 100%;
-    background-color: #ccc;
-    transition: 1s ease;
-  }
-  .main-content_large {
-    width: 100%;
-  }
-  .sidebar_small {
-    width: 0%;
-  }
-  
-  .sidebarButton {
-    position: absolute;
-    border: none;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.3);
-    left: 100%;
-    top: 50vh;
-    transform: translateX(-50%);
-    cursor: pointer;
-    z-index: 1;
-  }
-  .navLinks {
-    position: relative;
-    display: block;
-    text-align: center;
-    overflow-x: hidden;
-    text-decoration: none;
-    font-size: 25px;
-    color: #000000;
-    z-index: 0;
-  }
-</style>
-  <div class="row">
+    }
 
-    <!-- side nav with buttons -->
-     <div class="grid-container">
-      <!-- COLLAPSIBLE SIDENAV -->
-      <div class="sidebar">
-        <button id="sidebarButton" class="sidebarButton" onclick="showHideSidebar();toggle(this)"> << </button>
-       
-        <!-- SIDE BAR CONTENT -->
-        <div class="sidebarContent">
-            
-          <img src="assets/Panther-Chatroom---Logo-Reveal.gif" class="navLinks" style=width:90%;/>
+    .main-content {
+      width: 100%;
+      height: 100%;
+      background-color: #ccc;
+      transition: 1s ease;
+    }
 
-          <h5 id="uName" class="navLinks" style="color: white;">insert username here</h5>
-        
-          <a  id='goToRandomChat' class="sidebtn navLinks">Start Chat</a>
-          <a  id='goToFriends' class="sidebtn navLinks">View Friends</a>
-          <a  id='goToMainRoom' class="sidebtn navLinks">Exit Profile</a>
-          <a href="./index.html" class="leavebtn navLinks">Logout</a>
-     
-        </div>
-      </div>
+    .main-content_large {
+      width: 100%;
+    }
 
+    .sidebar_small {
+      width: 0%;
+    }
 
-    <div class="col-2">
-      <div class="card profilecard">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbKgzfBgGfUipgScQCMULqDdhKbiYNTtFNqQ&usqp=CAU"
-          class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title" id='username'>Username</h5>
-        </div>
-      </div>
+    .sidebarButton {
+      position: absolute;
+      border: none;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.3);
+      left: 100%;
+      top: 50vh;
+      transform: translateX(-50%);
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .navLinks {
+      position: relative;
+      display: block;
+      text-align: center;
+      overflow-x: hidden;
+      text-decoration: none;
+      font-size: 25px;
+      color: #000000;
+      z-index: 0;
+    }
+  </style>
+  <!-- <div class="row"> -->
+
+  <!-- side nav with buttons -->
+  <div class="grid-container">
+    <!-- COLLAPSIBLE SIDENAV -->
+    <div class="sidebar">
+      <button id="sidebarButton" class="sidebarButton" onclick="showHideSidebar();toggle(this)">
+        << </button>
+
+          <!-- SIDE BAR CONTENT -->
+          <div class="sidebarContent">
+
+            <img src="assets/Panther-Chatroom-Logo.gif" class="navLinks" style=width:90%; />
+
+            <h5 id="uName" class="navLinks" style="color: white;">insert username here</h5>
+
+            <a id='goToRandomChat' class="sidebtn navLinks">Start Chat</a>
+            <a id='goToFriends' class="sidebtn navLinks">View Friends</a>
+            <a id='goToMainRoom' class="sidebtn navLinks">Exit Profile</a>
+            <a href="./index.html" class="leavebtn navLinks">Logout</a>
+
+          </div>
     </div>
 
-    <div class="col-md-8" style="margin-top: 5vh;">
-      <div id='info' disabled>
-        <label for='first_name'>First Name</label>
-        <input id='first_name' name='firstName'/></br>
-        <label for='last_name'>Last Name</label>
-        <input id='last_name' name='lastName'/></br>
-        <label for='bio'>BIO</label>
-        <input id='bio' name='bio' /></br>
-        <label for='email'>Email</label>
-        <input id='email' name='email'/></br>
-        <label for='age'>Age</label>
-        <input id='age' name='age'/></br>
-      </div>
-      <!-- insert online/offline status here -->
-      <button id="edit">Edit</button>
-      <button id="save">Save</button>
-    </div>
+    <main class="main-content" style="height: 100vh;">
+      <div class="row" style=" width: fit-content;margin: auto; margin-top: 3%;">
 
-    
+
+
+        <div class="col-4 mt-2">
+          <div class="card profilecard" style="margin:5%">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbKgzfBgGfUipgScQCMULqDdhKbiYNTtFNqQ&usqp=CAU"
+              class="card-img-top" alt="..." />
+            <!-- <div class="card-body">
+              <h5 class="card-title" id='username'>Username</h5>
+            </div> -->
+          </div>
+        </div>
+        <div class="col" style="margin: 5%">
+          <div id='info' disabled>
+            <div class="row mb-3">
+              <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="first_name" placeholder="First Name">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="last_name" placeholder="Last Name">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="email" placeholder="Email">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="age" class="col-sm-2 col-form-label">Age</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="age" placeholder="Age">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="bio" class="col-sm-2 col-form-label">Bio</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" id="bio" placeholder="Bio"></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- insert online/offline status here -->
+          <div class="float-end">
+            <button class="btn btn-dark" id="edit">Edit</button>
+            <button class="btn btn-dark" id="save">Save</button>
+          </div>
+
+        </div>
+      </div>
+    </main>
   </div>
   <script src="/socket.io/socket.io.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
-            integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg=="
-            crossorigin="anonymous"></script>
-        <script src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
+    integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg=="
+    crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
   <script>
-  
-  
-  document.getElementById('goToMainRoom').addEventListener('click', function () {
-            window.document.location = '/mainroom.html' + '?username=' + username;
-        })
-        document.getElementById('goToRandomChat').addEventListener('click', function () {
 
-            var roomChoice = Math.round(Math.random() * 100)
-            socket.on('new room', newRoom => {
-                roomChoice = newRoom
-                console.log('roomChoice:', roomChoice)
-            })
-            console.log('roomChoice:', roomChoice)
 
-            window.document.location = '/randomchat.html' + '?username=' + username + '&room=' + roomChoice;
+    document.getElementById('goToMainRoom').addEventListener('click', function () {
+      window.document.location = '/mainroom.html' + '?username=' + username;
+    })
+    document.getElementById('goToRandomChat').addEventListener('click', function () {
 
-        })
-        document.getElementById('goToFriends').addEventListener('click', function () {
-            window.document.location = '/friends.html' + '?username=' + username;
-        })
-    console.log('getting username',username)
-    document.getElementById('uName').innerHTML = username
+      var roomChoice = Math.round(Math.random() * 100)
+      socket.on('new room', newRoom => {
+        roomChoice = newRoom
+        console.log('roomChoice:', roomChoice)
+      })
+      console.log('roomChoice:', roomChoice)
+
+      window.document.location = '/randomchat.html' + '?username=' + username + '&room=' + roomChoice;
+
+    })
+    document.getElementById('goToFriends').addEventListener('click', function () {
+      window.document.location = '/friends.html' + '?username=' + username;
+    })
+    // console.log('getting username',username)
+    // document.getElementById('uName').innerHTML = username
+    function printNameonWelcome() {
+      const { username } = Qs.parse(location.search, {
+        ignoreQueryPrefix: true
+      })
+      console.log(username)
+      document.getElementById('uName').innerHTML = username
+    }
+    printNameonWelcome()
   </script>
 </body>
 
 
 
 <script>
-document.getElementById('goToMainRoom').addEventListener('click', function () {
-            window.document.location = '/mainroom.html' + '?username=' + username;
-        })
-        document.getElementById('goToRandomChat').addEventListener('click', function () {
 
-            var roomChoice = Math.round(Math.random() * 100)
-            socket.on('new room', newRoom => {
-                roomChoice = newRoom
-                console.log('roomChoice:', roomChoice)
-            })
-            console.log('roomChoice:', roomChoice)
-
-            window.document.location = '/randomchat.html' + '?username=' + username + '&room=' + roomChoice;
-
-        })
-        document.getElementById('goToProfile').addEventListener('click', function () {
-            window.document.location = '/profile.html' + '?username=' + username;
-        })
-
-
-          // SIDENAV TOGGLER
+  // SIDENAV TOGGLER
   const sidebar = document.querySelector('.sidebar');
   const mainContent = document.querySelector('.main-content');
 
@@ -205,54 +237,54 @@ document.getElementById('goToMainRoom').addEventListener('click', function () {
 
 
   // takes in user data from profile page and saves to local storage 'onclick' of savebtn
-  async function updateUser(){
-        let username = document.getElementById('username').innerHTML.trim();
-        let fn = document.getElementById('first_name').value.trim();
-        let ln = document.getElementById('last_name').value.trim();
-        let bio = document.getElementById('bio').value.trim();
-        let email = document.getElementById('email').value.trim();
-        let age = document.getElementById('age').value.trim();
+  async function updateUser() {
+    // let username = document.getElementById('username').innerHTML.trim();
+    let fn = document.getElementById('first_name').value.trim();
+    let ln = document.getElementById('last_name').value.trim();
+    let bio = document.getElementById('bio').value.trim();
+    let email = document.getElementById('email').value.trim();
+    let age = document.getElementById('age').value.trim();
 
-        let updatedProfile = {
-        username: username,
-        first_name: fn,
-        last_name: ln,
-        bio: bio,
-        email: email,
-        age: age,
-        };
+    let updatedProfile = {
+      // username: username,
+      first_name: fn,
+      last_name: ln,
+      bio: bio,
+      email: email,
+      age: age,
+    };
 
-  const fetchOptions = {
-     headers: { 'Content-Type': 'application/json'},
-     method: 'post',
-     body: JSON.stringify(updatedProfile),
-            }
-            const result = await fetch( `/editProfile/${username}`, fetchOptions ).then( r=>r.json() )
-            console.log(result)
-          }
-
-    // populates the profile page with db data
-    async function fetchProfile(){
-      const profile = await fetch( `/getProfile/${username}` ).then( r=>r.json() )
-      document.getElementById('bio').value = ` ${profile[0].bio}`
-      document.getElementById('email').value = `${profile[0].email}`
-      document.getElementById('age').value = `${profile[0].age}`
-      document.getElementById('first_name').value = `${profile[0].first_name}`
-      document.getElementById('last_name').value = `${profile[0].last_name}`
-      document.getElementById('username').innerHTML = `${username}`
+    const fetchOptions = {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'post',
+      body: JSON.stringify(updatedProfile),
     }
-  
-    fetchProfile()
-    // save and edit buttons -> save triggers POST request to save data.
-    document.getElementById('edit').addEventListener('click', ()=>{
-      document.getElementById('info').classList.remove("disabledbutton")
-      // document.getElementById('info').disabled = false;
-    })
-    document.getElementById('save').addEventListener('click', ()=>{
-      updateUser()
-      document.getElementById('info').classList.add("disabledbutton")
-      // document.getElementById('info').disabled = true;
-    })
+    const result = await fetch(`/editProfile/${username}`, fetchOptions).then(r => r.json())
+    console.log(result)
+  }
+
+  // populates the profile page with db data
+  async function fetchProfile() {
+    const profile = await fetch(`/getProfile/${username}`).then(r => r.json())
+    document.getElementById('bio').value = ` ${profile[0].bio}`
+    document.getElementById('email').value = `${profile[0].email}`
+    document.getElementById('age').value = `${profile[0].age}`
+    document.getElementById('first_name').value = `${profile[0].first_name}`
+    document.getElementById('last_name').value = `${profile[0].last_name}`
+    // document.getElementById('username').innerHTML = `${username}`
+  }
+
+  fetchProfile()
+  // save and edit buttons -> save triggers POST request to save data.
+  document.getElementById('edit').addEventListener('click', () => {
+    document.getElementById('info').classList.remove("disabledbutton")
+    // document.getElementById('info').disabled = false;
+  })
+  document.getElementById('save').addEventListener('click', () => {
+    updateUser()
+    document.getElementById('info').classList.add("disabledbutton")
+    // document.getElementById('info').disabled = true;
+  })
 </script>
 
 </html>
