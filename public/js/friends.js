@@ -16,9 +16,8 @@ room = 'Friends Room'
 
 console.log(username, room)
 
-socket.emit('joined friend room' ,({username, room}))
 // if (typeof (room) !== 'undefined') {
-socket.emit('joined room', username );
+// socket.emit('joined room', username );
 // }
 socket.on('rooms details', allRoomsArray => {
     console.log(allRoomsArray)
@@ -49,6 +48,7 @@ form.addEventListener('submit', function (event) {
         socket.emit('chat message', input.value);
         let msg = input.value;
         let thisObj = { msg, user2 };
+        console.log('[thisObj]',thisObj)
         socket.emit('friend message', thisObj);
         input.value = '';
         input.focus();
@@ -66,6 +66,8 @@ document.getElementById('createRoom').addEventListener('click', () => {
         document.getElementById('messages').innerHTML = ''
         document.getElementById('input').disabled = false
         socket.connect()
+        // console.log(secondUser)
+        socket.emit('joined friend room' ,({username, secondUserName}))
         console.log('username', username)
         // socket.emit('friend online',username)
         // console.log(`[username]:${username} ; [seconUserName]: ${secondUserName}`)

@@ -29,9 +29,9 @@ function getFriends(username) {
     return db.query(`SELECT friend FROM matches WHERE username = "${username}" `);
 }
 
-function addFriend(username, friend) {
+function addFriend(username, friend, randomRoomNumber) {
     return db.query(
-        `INSERT INTO matches SET username="${username}", friend="${friend}", friend_room="${username}-${friend}";`
+        `INSERT INTO matches SET username="${username}", friend="${friend}", friend_room="${randomRoomNumber}";`
     );
 }
 

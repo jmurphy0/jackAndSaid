@@ -142,17 +142,20 @@ io.on('connection', (socket) => {
     });
 
     //Made a different one for texting friends in different rooms than the random ones
-    socket.on('joined friend room', ({username, room})=>{
+    socket.on('joined friend room', async ({username, secondUserName})=>{
         let isActive = true
+        ormfnct.isActive(username);
         // room = 1
-        console.log(room)
-        const user = userJoin(socket.id, username, room, isActive)
+        console.log('[room ]',room)
+        roomf = await ormfnct.getRoomName(username,secondUserName)
+        console.log('[room again]',roomf[0].friend_room)
+        const user = userJoin(socket.id, username, roomf[0].friend_room, isActive)
         console.log(user)
         socket.join(user.room)
         console.log('trying to find out the user room',user.room)
         socket.emit('new room', user.room)
         //to welcome user
-        // socket.emit('message', formatMessage('PantherBot', 'Welcome to PantherChatroom!'));
+        socket.emit('message', formatMessage('PantherBot', 'Welcome to PantherChatroom!'));
 
         // Broadcast when a user connects
         socket.broadcast.to(user.room).emit('message', formatMessage('PantherBot', `${user.username} has joined the chat`));
@@ -192,7 +195,9 @@ io.on('connection', (socket) => {
         console.log('added :', getRoomUsers(user.room))
         let user1 = getRoomUsers(user.room)[0].username
         let user2 = getRoomUsers(user.room)[1].username
-        ormfnct.addFriend(`${user1}`, `${user2}`);
+        let randomRoomNumber = Math.round(Math.random() * 100000)
+        ormfnct.addFriend(`${user1}`, `${user2}` , randomRoomNumber);
+        ormfnct.addFriend(`${user2}`, `${user1}` , randomRoomNumber);
 
         console.log(`${user1} and ${user2} are now friends`)
         friends.push({ user1, user2 })
@@ -268,6 +273,34 @@ io.on('connection', (socket) => {
     // console.log(`${socket.id} user connected`);
     // console.log(`user id: `,socket.id);
 
+
+    socket.on('friend message',async(msg)=>{
+        console.log('this msg is coming like this :',msg)
+        const user = getCurrentUser(socket.id);
+        console.log ('[userrrrrrr]',user)
+        // --------- database work  and calls ------------------------
+        let data = formatMessage(`${user.username}`, msg.msg);
+
+        //creating a unique field on both usernames to retrieve their chat from db
+        // let reciever = getRoomUsers(`${user.room}`);
+        let users = [user.username,msg.user2]
+        // reciever.forEach((person)=> users.push(person.username))
+
+        // saves messages between two users
+        ormfnct.saveMsg(data.username, data.text, data.time, `${[user.username,msg.user2]}`);
+
+        //gets all messages from a specific user
+        //const allMessages = await ormfnct.allMesagesFromUser(user);
+
+        // gets all messsages between two users
+        // membersChat = await getMemChat(`${users}`)
+        // console.log(membersChat);
+        //console.log(`room: );
+
+        //-------------------------------------------------------
+        // io.to(user.room).emit('chat message', formatMessage(user.username, msg.msg));
+    })
+
     //When a chat is sent
     socket.on('chat message', async (msg) => {
         const user = getCurrentUser(socket.id);
@@ -280,7 +313,7 @@ io.on('connection', (socket) => {
         reciever.forEach((person)=> users.push(person.username))
 
         // saves messages between two users
-        ormfnct.saveMsg(data.username, data.text, data.time, `${users}`);
+        // ormfnct.saveMsg(data.username, data.text, data.time, `${users}`);
 
         //gets all messages from a specific user
         //const allMessages = await ormfnct.allMesagesFromUser(user);
