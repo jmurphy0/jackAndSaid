@@ -16,8 +16,113 @@
 </head>
 
 <body>
+    <style>
+         .grid-container {
+      width: 100vw;
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      /* border: 2px solid rgba(0, 0, 0, 0.4); */
+      transition: 1s ease;
+    }
 
-    <div id="mySidenav" class="sidenav">
+    .sidebar {
+      width: 350px;
+      height: 100%;
+      background-color: rgb(13, 6, 104);
+      transition: 1s ease;
+      position: relative;
+      text-align: center;
+      justify-content: center;
+    }
+
+    @media only screen and (min-width: 770px) {
+        .grid-container{width: 100vw;}
+      .sidebar {
+        width:300px;
+      }
+      .main-content{
+        margin-left:20%;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .grid-container{width: 350px}
+      /* .sidebar {
+          
+        width: 100%;
+      } */
+      .main-content{
+        margin-left: 2%;
+      }
+    }
+body{background-color: #ccc;}
+
+    .main-content {
+      width: 100%;
+      height: 100%;
+      background-color: #ccc;
+      transition: 1s ease;
+    }
+
+    .main-content_large {
+      width: 100%;
+    }
+
+    .sidebar_small {
+      width: 0%;
+    }
+
+    
+#uName {
+    text-align: center; 
+}
+
+.sidebtn {
+    color: rgb(13, 6, 104);
+    background-color:  rgb(188, 208, 247);
+    width: 90%;
+    border-radius: 15px;
+    text-align: center;
+    margin: 15px;
+    display: inline-block;
+}
+
+.sidebtn:hover {
+    color: #b2e2ee;
+    background-color:  rgb(153, 182, 238);
+}
+
+a{cursor: pointer;}
+
+    .sidebarButton {
+      position: absolute;
+      border: none;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.3);
+      left: 100%;
+      top: 47vh;
+      transform: translateX(-50%);
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .navLinks {
+      position: relative;
+      display: block;
+      text-align: center;
+      overflow-x: hidden;
+      text-decoration: none;
+      font-size: 25px;
+      color: #000000;
+      z-index: 0;
+    }
+
+    </style>
+
+    <!-- <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <img src="./assets/Panther-Chatroom-Logo.gif" alt="Panther ChatRoom Logo" width=250
             style="animation-play-state: paused;" />
@@ -34,9 +139,36 @@
                 <span style="font-size:30px;cursor:pointer; color: white;" onclick="openNav()">&#9776; open</span>
 
             </ul>
-        </div>
+        </div> -->
+ <!-- side nav with buttons -->
+ <div class="grid-container">
+    <!-- COLLAPSIBLE SIDENAV -->
+    <div class="sidebar"  style="position: fixed; float: left;">
+      <button id="sidebarButton" class="sidebarButton" onclick="showHideSidebar();toggle(this)">
+        << </button>
 
-        <div class="col-9">
+          <!-- SIDE BAR CONTENT -->
+          <div class="sidebarContent">
+
+            <img src="assets/Panther-Chatroom-Logo.gif" class="navLinks" style=width:90%; />
+
+            <h5 id="uName" class="navLinks" style="color: white;">insert username here</h5>
+
+            <!-- <a id='goToRandomChat' class="sidebtn navLinks">Start Chat</a> -->
+            <!-- <a id='goToProfile' class="sidebtn navLinks">View Profile</a> -->
+            <a id='goToMainroom' class="sidebtn navLinks">Leave Chat</a>
+            <a id="addFriend" class="leavebtn sidebtn navLinks">
+                Add Friend</a>
+
+          </div>
+
+          <!-- <a><button id="goToMainroom" class="btn btn-danger btn-sm mt-5 mb-3">Leave Chat </button></a>
+          <a href="" onclick="return false;"><button onclick="closeNav()" id="addFriend"
+                  class="btn btn-primary btn-sm mt-2 mb-3">Add Friend</button></a> -->
+  
+    </div>
+    <main class="main-content" style="height: 100vh;">
+        <div class="col-9 " >
             <div class="container main">
                 <!-- <div class="user">Said</div> -->
                 <h2 id="waitingMessage" style="margin: 5%;">Please wait for someone to join...</h2>
@@ -48,8 +180,9 @@
 
             </div>
         </div>
-
     </div>
+    </main>
+   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.6/qs.min.js"
         integrity="sha512-3TmPrquYLaAsUmZKXRARTDC5siWhLAdBVqNo4dWpDABBtLU62AaoTaQJEvjxjExcZYurO6i1dnK85k8pPIBlRg=="
@@ -57,17 +190,41 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="js/main.js"></script>
     <script>
+
+
+    
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+    
+        function showHideSidebar() {
+          sidebar.classList.toggle('sidebar_small')
+          mainContent.classList.toggle('main-content_large')
+        }
+    
+        function toggle(element) {
+          element.innerText = element.innerText === '<<' ? '>>' : '<<';
+        }
+    
+
         document.getElementById('goToMainroom').addEventListener('click', function () {
             window.document.location = '/mainroom.html' + '?username=' + username;
         })
 
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "100%";
-        }
+        function printNameonWelcome() {
+      const { username } = Qs.parse(location.search, {
+        ignoreQueryPrefix: true
+      })
+      console.log(username)
+      document.getElementById('uName').innerHTML = username
+    }
+    printNameonWelcome()
+        // function openNav() {
+        //     document.getElementById("mySidenav").style.width = "100%";
+        // }
 
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
+        // function closeNav() {
+        //     document.getElementById("mySidenav").style.width = "0";
+        // }
     </script>
 </body>
 
